@@ -1,19 +1,25 @@
 
-    function verificarNumero() {
-      let numero = document.getElementById("numero").value;
-      let resultado = document.getElementById("resultado");
+function verificarIdade() {
+  let idade = document.getElementById("idade").value;
+  let resultado = document.getElementById("resultado");
 
-      numero = Number(numero);
+  let anoAtual = new Date().getFullYear();
+  let anoNascimento = new Date(idade).getFullYear();
+  idade = anoAtual - anoNascimento;
 
-      if (numero > 0) {
-        resultado.textContent = "O número é positivo";
-        resultado.className = "resultado positivo";
-      } else if (numero < 0) {
-        resultado.textContent = "O número é negativo";
-        resultado.className = "resultado negativo";
-      } else {
-        resultado.textContent = "O número é zero";
-        resultado.className = "resultado zero";
-      }
-    }
- 
+console.log("Idade calculada: " + idade);
+
+  if (idade >= 18 && idade <= 70) {
+    console.log(idade + ' anos, voto obrigatório.');
+    resultado.textContent = idade + " anos, voto obrigatório.";
+    resultado.style.color = "green";
+  } else if ((idade >= 16 && idade < 18) || idade > 70) {
+    resultado.textContent = idade + " anos, voto facultativo.";
+    console.log(idade + ' anos, voto facultativo.');
+    resultado.style.color = "orange";
+  } else {
+    resultado.textContent = idade + " anos, não pode votar.";
+    console.log(idade + ' anos, não pode votar');
+    resultado.style.color = "red";
+  }
+}
